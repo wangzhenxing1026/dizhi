@@ -36,3 +36,17 @@ build/
 
 ### Mac OS ###
 .DS_Store
+### 项目运行产物与敏感数据 ###
+# 含登录态 Cookie 的配置，禁止提交（仓库内保留占位模板 src/main/resources/config.properties）
+/config.properties
+# HAR 抓包含登录态 Cookie（BDUSS），禁止提交
+*.har
+# 运行产物中 output.txt / map.html / failed.txt / review.txt 为交付物，保留跟踪
+# 原始响应缓存（体积大、可重新生成）
+/cache/
+# Edge CDP 调试实例 profile 与冒烟测试目录
+/edge-cdp-profile/
+/testrun/
+# 运行日志
+/run.log
+/replay.log
