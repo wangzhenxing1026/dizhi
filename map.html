@@ -43,7 +43,7 @@ function buildAll(){
       r.polygon.forEach(function(p){ bpts.push(new BMap.Point(p.lon, p.lat)); });
       var pg = new BMap.Polygon(bpts, {strokeColor: color, strokeWeight: 1.5, strokeOpacity: 0.9, fillColor: color, fillOpacity: 0.25});
       pg.addEventListener('click', function(){ openInfo(i, pt); });
-      polygons.push(pg);
+      polygons[i] = pg;
     }
   });
   map.setViewport(pts);
@@ -67,8 +67,8 @@ function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace
 function filter(st){
   REGIONS.forEach(function(r, i){
     var show = st === 'all' || r.status === st;
-    markers[i].setVisible(show);
-    if (polygons[i]) polygons[i].setVisible(show);
+    if (show){ markers[i].show(); if (polygons[i]) polygons[i].show(); }
+    else { markers[i].hide(); if (polygons[i]) polygons[i].hide(); }
   });
 }
 var btns = document.querySelectorAll('#panel button');

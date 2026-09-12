@@ -171,6 +171,7 @@ region_id	region_name	center_lonlat	address	place_type
 | 易混淆：香蜜楼B单元 | ✓ 接口无"B单元"子 POI，选母体"香蜜楼"（40分），未误选其他小区 |
 | 无多边形地址 | ✓ address=[] 正确输出（506 条），未错误借用其他楼栋边界 |
 | 评分明细 | ✓ 每条地址的候选名称、五维得分、总分、选中项均打印到运行日志；低置信度另见 review.txt |
+| 过滤器 | ✓ 成功/低置信度过滤生效（修复：JS API 3.0 覆盖层无 setVisible，改 hide/show，并修正多边形数组索引错位） |
 
 ### 已知边界情况
 
