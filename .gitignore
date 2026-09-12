@@ -50,3 +50,13 @@ build/
 # 运行日志
 /run.log
 /replay.log
+# 一次性备份
+*.bak
+*.bak2
+*.bak3
+# 失败地址重查工作目录（含临时凭证与抓包原始响应，勿入库）
+/retry/
+# ZCode 会话目录
+/.zcode/
+# 临时语法检查产物
+/tools/_check.js
