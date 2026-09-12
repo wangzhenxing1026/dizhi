@@ -99,7 +99,13 @@ public class AuthRefresher {
                     + searchUrl.replace("\\", "\\\\").replace("\"", "\\\"") + "\"}}");
             long deadline = System.currentTimeMillis() + timeoutMs;
             while (System.currentTimeMillis() < deadline) {
-                String msg = ws.readMessage();
+                String msg;
+                try {
+                    msg = ws.readMessage();
+                } catch (java.net.SocketTimeoutException te) {
+                    // 单次读超时（页面加载事件间隔大）不终止监听，继续等到达截止时间
+                    continue;
+                }
                 if (msg == null) {
                     break;
                 }
